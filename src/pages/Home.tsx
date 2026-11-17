@@ -21,8 +21,8 @@ export default function Home() {
           tactics in a friendly, safe setting. No experience needed.
         </p>
         <div className="row">
-          <Link to="/lessons" className="btn btn-primary">See Lessons</Link>
-          <Link to="/locations" className="btn btn-outline">Find a Location</Link>
+          <Link to="/master" className="btn btn-primary">See the Master</Link>
+          <Link to="/lessons#clubs" className="btn btn-outline">Find a Club</Link>
         </div>
         <div className="grid highlights">
           {highlights.map((h) => (

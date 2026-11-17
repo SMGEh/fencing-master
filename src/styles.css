@@ -162,3 +162,56 @@ p { margin: 0; }
     max-height: 300px;
   }
 }
+
+/* Schedule calendar */
+.cal { border: 1px solid var(--line); background: var(--bg); }
+.cal-head, .cal-body { display: grid; grid-template-columns: 64px repeat(7, minmax(0, 1fr)); }
+.cal-head { border-bottom: 1px solid var(--line); background: var(--panel); }
+.cal-day-name { padding: 12px 8px; text-align: center; font-family: var(--display); font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.cal-times, .cal-col { height: calc(var(--rows) * var(--hour)); }
+.cal-time { height: var(--hour); padding: 4px 8px 0 0; text-align: right; font-size: 13px; color: var(--dim); }
+.cal-col { position: relative; border-left: 1px solid var(--line); background-image: linear-gradient(var(--line) 1px, transparent 1px); background-size: 100% var(--hour); }
+.cal-event { position: absolute; display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; overflow: hidden; border: 0; border-left: 4px solid rgba(0,0,0,.25); background: var(--club); color: #fff; font: inherit; text-align: left; cursor: pointer; }
+.cal-event:hover { filter: brightness(1.08); }
+.cal-event.active { outline: 3px solid var(--text); outline-offset: 1px; z-index: 1; }
+.cal-event-time { font-size: 12px; font-weight: 600; opacity: .9; }
+.cal-event-name { font-size: 14px; font-weight: 600; line-height: 1.2; }
+.cal-event-club { font-size: 12px; line-height: 1.2; opacity: .9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-detail-club { margin: 12px 0 16px; padding: 12px 16px; border-left: 4px solid var(--club); background: var(--bg); }
+.cal-detail-club p { margin-bottom: 4px; }
+.cal-detail { margin-top: 24px; border-left: 6px solid var(--club); animation: expandIn .2s ease; }
+.cal-detail .tag { color: var(--club); }
+.card.location { border-top: 6px solid var(--club); }
+.club-info { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; scroll-margin-top: 24px; }
+.club-pick-head { display: flex; align-items: baseline; gap: 16px; margin: 32px 0 12px; }
+.text-btn { padding: 0; border: 0; background: none; font: inherit; font-size: 15px; font-weight: 600; color: var(--accent-text); cursor: pointer; text-decoration: underline; }
+.club-info-card { position: relative; padding: 18px 20px; border: 2px solid var(--line); border-top: 5px solid var(--club); background: var(--bg); display: flex; flex-direction: column; cursor: pointer; transition: border-color .15s, background .15s, opacity .15s; opacity: .7; }
+.club-info-card:hover { opacity: 1; border-color: var(--club); }
+.club-info-card.selected { opacity: 1; border-color: var(--club); background: var(--panel); }
+.club-toggle { padding: 0; border: 0; background: none; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
+.club-toggle::after { content: ""; position: absolute; inset: 0; }
+.club-toggle:focus-visible { outline: none; }
+.club-info-card:has(.club-toggle:focus-visible) { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.club-check { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); background: var(--bg); color: transparent; display: flex; align-items: center; justify-content: center; transition: background .15s, border-color .15s; }
+.club-info-card.selected .club-check { background: var(--club); border-color: var(--club); color: #fff; }
+.club-info-card h3 { padding-right: 36px; }
+.club-info-card h3 { margin: 0 0 8px; font-family: var(--display); font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+.club-info-card p { margin-bottom: 8px; line-height: 1.5; color: var(--muted); font-size: 15px; }
+.club-phone { position: relative; z-index: 1; font-weight: 600; color: var(--text); }
+.club-phone:hover { text-decoration: underline; }
+.club-equip { font-size: 14px !important; font-style: italic; color: var(--dim) !important; }
+.club-register-notes { margin: -16px 0 36px; }
+.club-register-notes p { margin: 0 0 4px; font-size: 14px; font-style: italic; color: var(--dim); }
+.club-site-link { position: relative; z-index: 1; align-self: flex-start; margin: auto 0 10px; font-size: 15px; }
+.club-site-link + .club-map-link { margin-top: 0; }
+.club-map-link { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; font-size: 15px; }
+.agenda { display: none; }
+.agenda-day { margin-bottom: 20px; }
+.agenda-item { display: flex; flex-direction: column; gap: 2px; width: 100%; margin-top: 8px; padding: 12px 14px; border: 1px solid var(--line); border-left: 6px solid var(--club); background: var(--panel); color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.agenda-item.active { border-color: var(--club); }
+@media (max-width: 760px) {
+  .cal { display: none; }
+  .agenda { display: block; }
+}
+@media (max-width: 1000px) { .club-info { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .club-info { grid-template-columns: 1fr; } }

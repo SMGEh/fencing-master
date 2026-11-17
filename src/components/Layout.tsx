@@ -4,7 +4,6 @@ const links = [
   { to: "/", label: "Home", end: true },
   { to: "/lessons", label: "Lessons", end: false },
   { to: "/master", label: "The Master", end: false },
-  { to: "/locations", label: "Locations", end: false },
   { to: "/history", label: "History", end: false },
   { to: "/books", label: "Books", end: false },
 ];
@@ -34,7 +33,7 @@ export default function Layout() {
       </main>
       <footer className="site-footer">
         <span>© Fencing Master. All rights reserved.</span>
-        <Link to="/locations">Contact &amp; locations</Link>
+        <Link to="/lessons">Contact &amp; locations</Link>
       </footer>
     </div>
   );
