@@ -5,7 +5,7 @@ export const historySections:HistorySection[] = [
     id: "club",
     title: "Our Club",
     summary: "Discover the founding of our club and the people who shaped its history.",
-    image: `${import.meta.env.BASE_URL}images/club-history.jpg`,
+    image: `${import.meta.env.BASE_URL}images/historyThumb/history0.png`,
     imageAlt: "Fencing club and its members",
     paragraphs: [
       {text:"The Fencing Club, with an expert fencing master and a varied membership comprising superior and less advanced fencers, provides the ideal conditions for the pursuit of the sport of fencing. This is so, because the basic techniques of fencing can only be mastered by lessons, exercises and fencing bouts. As the stance, footwork and finger play in fencing do not come naturally to most people, certain muscles have to be developed in a way different from that required by other sports or for normal movement before the fencing moves can be made automatically as required."},
@@ -18,7 +18,7 @@ export const historySections:HistorySection[] = [
     id: "art",
     title: "The Art of Fencing",
     summary: "Explore the techniques, strategy, and skill behind the sport of fencing.",
-    image: `${import.meta.env.BASE_URL}images/art-of-fencing.jpg`,
+    image: `${import.meta.env.BASE_URL}images/historyThumb/history1.png`,
     imageAlt: "Fencer practising fencing techniques",
     paragraphs: [
       {text: "The skilful use of a sword according to established rules and movements was practised by the ancient Egyptians, Persians, Greeks and Romans as well as the Chinese and the Japanese, not only in war but also in exercise and in entertainment. The development of fencing techniques and the history of the sword are interlinked. As new needs for the sword arise, the sword has to be modified accordingly. And as new models are made with new material and improved methods of construction, new techniques are devised."},
@@ -43,7 +43,7 @@ export const historySections:HistorySection[] = [
     id: "ancient",
     title: "Ancient Fencing",
     summary: "Trace the origins of swordsmanship and the development of early fighting techniques.",
-    image: `${import.meta.env.BASE_URL}images/ancient-fencing.jpg`,
+    image: `${import.meta.env.BASE_URL}images/historyThumb/history2.png`,
     imageAlt: "Historical sword fighting",
     paragraphs: [
   {text: "The word \"Escrime\" is used to signify the art of \"Touching without being touched\". It seems that the word \"Carma\" coming from Sanskrit meaning fencing. An old French word \"Escremie\" or \"Eskermie\" is also used to specify the meaning of \"Escrime\" or fencing."},
@@ -79,7 +79,7 @@ export const historySections:HistorySection[] = [
     id: "modern",
     title: "Modern Fencing",
     summary: "Learn how fencing developed into the international competitive sport it is today.",
-    image: `${import.meta.env.BASE_URL}images/modern-fencing.jpg`,
+    image: `${import.meta.env.BASE_URL}images/historyThumb/history3.png`,
     imageAlt: "Modern competitive fencing match",
     paragraphs: [
       {text: "Fencing has evolved over 800 years from a deadly combat to a complete sport. Speed of movement and the intricate strategy of ancient dueling are still very much a part of modern fencing. Since dueling was outlawed, fencing as a sport has grown more and more popular with both men and women. Women and men compete separately, with some fencers becoming proficient in two or all three weapons, while others specialize in only one. Coordination, speed, agility and self assurance are a few of the qualities this sport requires of its followers. Because of the necessity to analyze the opponent's game and to develop strategy, fencing is often described as an animated game of chess. With the development of new metal alloys, lighter and more manageable weapons have become possible. These place a premium on speed and coordination and give little if any advantage to sheer strength." , image:`${import.meta.env.BASE_URL}images/modern/modern0.png`, imageAlt:"modern0.png", imageSide: "right"},

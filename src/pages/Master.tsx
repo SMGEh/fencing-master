@@ -1,18 +1,21 @@
-import { facts } from "../data/masterData"
-import { bio } from "../data/masterData"
+import { facts, bio, yearsFencing, yearsTeaching } from "../data/masterData"
 
 export default function Master() {
   return (
     <>
     <section className="sec">
       <div className="in master">
-        <div className="ph master-photo">[Photo of the master]</div>
+        <img
+          className="master-photo"
+          src={`${import.meta.env.BASE_URL}images/master/master.png`}
+          alt="Maître Bac Tau"
+        />
         <div>
           <p className="eyebrow">The Master</p>
-          <h1 className="h2">Maître [Name]</h1>
+          <h1 className="h2">Maître Bac Tau</h1>
           <p className="lead">
-            Maître [Name] has been fencing for [XX] years and teaching for [XX]. A former
-            [competitive background, e.g. provincial team member], they now focus on helping
+            Maître Bac has been fencing for {yearsFencing} years and teaching for {yearsTeaching}. A former
+            olympic fencing instructor, they now focus on helping
             people of all ages fall in love with the sport.
           </p>
           <p className="lead">
@@ -21,9 +24,17 @@ export default function Master() {
           </p>
           <div className="facts">
             {facts.map((f) => (
-              <div key={f.label}>
+              <div key={f.label} className={Array.isArray(f.value) ? "fact-tall" : undefined}>
                 <p className="lbl">{f.label}</p>
-                <p>{f.value}</p>
+                {Array.isArray(f.value) ? (
+                  <ul className="facts-list">
+                    {f.value.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{f.value}</p>
+                )}
               </div>
             ))}
           </div>

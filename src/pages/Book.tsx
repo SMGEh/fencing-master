@@ -1,4 +1,8 @@
 import { books, callNumbers } from "../data/booksData";
+import { contact } from "../data/contactData";
+
+const formatList = (items: string[]): string =>
+  items.length <= 2 ? items.join(" and ") : `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
 
 export default function Books() {
   return (
@@ -8,8 +12,9 @@ export default function Books() {
           <p className="eyebrow">Books</p>
           <h1 className="h2">Fencing Books by Maître Bac</h1>
           <p className="lead">
-            Five titles are available to order online, covering foil technique, competitive
-            training, equipment repair, strategy and artistic fencing.
+            Five titles covering foil technique, competitive training, equipment repair, strategy
+            and artistic fencing. To buy a copy, email{" "}
+            <a href={`mailto:${contact.email}`} className="inline-link">{contact.email}</a>.
           </p>
           <p className="lead">
             The books can also be found in the Olympic Studies Centre (OSC) online catalogue.{" "}
@@ -30,15 +35,17 @@ export default function Books() {
                 ))}
                 <p className="book-specs">{b.specs}</p>
                 {b.note && <p className="book-specs">{b.note}</p>}
-                {b.price && <p className="strong">{b.price}</p>}
-                {b.shipping && <p className="book-specs">{b.shipping}</p>}
-                <div className="row book-orders">
-                  {b.orders.map((o) => (
-                    <a key={o.label} href={o.url} className="btn btn-outline">
-                      {o.label}
-                    </a>
+                <p className="book-specs">
+                  Available in <strong>{formatList(b.languages)}</strong>
+                </p>
+                {b.price &&
+                  (Array.isArray(b.price) ? b.price : [b.price]).map((p) => (
+                    <p key={p} className="strong">{p}</p>
                   ))}
-                </div>
+                <p className="book-specs">
+                  To buy, email{" "}
+                  <a href={`mailto:${contact.email}`} className="inline-link">{contact.email}</a>
+                </p>
               </div>
             </article>
           ))}

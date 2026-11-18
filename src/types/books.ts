@@ -2,11 +2,10 @@ export interface Book {
   title: string;
   description: string[];
   specs: string;
-  price?: string;
-  shipping?: string;
+  /** A single price, or one line per edition when editions are priced differently. */
+  price?: string | string[];
   note?: string;
-  // TODO: replace "#" with the real order links.
-  orders: { label: string; url: string }[];
+  languages: string[];
 }
 
 export interface CallNumber {

@@ -1,7 +1,18 @@
+const FENCING_SINCE = 1965;
+const TEACHING_SINCE = 1970;
+
+const year = new Date().getFullYear();
+export const yearsFencing = year - FENCING_SINCE;
+export const yearsTeaching = year - TEACHING_SINCE;
+
 export const facts = [
   { label: "Weapons", value: "Foil · Épée · Sabre" },
-  { label: "Certification", value: "[Coaching certification]" },
-  { label: "Experience", value: "[XX] years coaching" },
+  { label: "Experience", value: `${yearsTeaching} years coaching` },
+  { label: "Education", value: [
+    "Diplôme de Moniteur d'Escrime from Ligne de l'Académie d'Armes de Paris",
+    "Brevet d'Etat de Prévôt d'Escrime from Ecole Interarmée et des Sports in Fontainebleau",
+    "Brevet d'Etat de Maître d'Escrime & Education Physique et des Sports from Institut National du Sports et d'Education Physique in Paris",
+  ] },
 ];
 
 export const bio = [

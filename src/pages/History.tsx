@@ -9,6 +9,8 @@ export default function History() {
   const [selectedSection, setSelectedSection] = useState<
     (typeof historySections)[number] | null
   >(null);
+  // Every thumbnail is cropped to the first section's image shape, measured once it loads.
+  const [thumbRatio, setThumbRatio] = useState<number | null>(null);
 
   return (
     <section className="sec">
@@ -21,7 +23,7 @@ export default function History() {
         </p>
 
         <div className="history-row">
-          {historySections.map((section) => (
+          {historySections.map((section, i) => (
             <button
                 key={section.id}
                 className={`history-card ${
@@ -37,6 +39,15 @@ export default function History() {
                     className="history-image"
                     src={section.image}
                     alt={section.imageAlt}
+                    style={thumbRatio ? { aspectRatio: thumbRatio } : undefined}
+                    onLoad={
+                      i === 0
+                        ? (e) => {
+                            const img = e.currentTarget;
+                            if (img.naturalHeight) setThumbRatio(img.naturalWidth / img.naturalHeight);
+                          }
+                        : undefined
+                    }
                 />
 
                 <div className="history-content">
@@ -50,12 +61,6 @@ export default function History() {
             {selectedSection && (
                 <div className="history-expanded">
                     <h2 className="h2">{selectedSection.title}</h2>
-
-                    <img
-                    className="history-expanded-image"
-                    src={selectedSection.image}
-                    alt={selectedSection.imageAlt}
-                    />
 
                     <div className="history-expanded-content">
 

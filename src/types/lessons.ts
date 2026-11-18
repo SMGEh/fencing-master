@@ -10,8 +10,12 @@ export interface Program {
 export interface Location {
   id: string;
   name: string;
+  /** Building or institution the club meets in, shown above the address. */
+  institution?: string;
+  /** Room within the institution, shown above the address. */
+  room?: string;
+  /** Street, city/province, then country and postal code — one line each. */
   address: string[];
-  hours: string;
   phone: string;
   /** "tel:" link for the phone number, digits only. */
   phoneHref: string;
@@ -23,7 +27,7 @@ export interface Location {
   color: string;
 }
 
-/** A weekly recurring class. day: 0 = Monday … 6 = Sunday. Times are 24h "HH:MM". */
+/** A weekly recurring class. day: 0 = Sunday … 6 = Saturday. Times are 24h "HH:MM". */
 export interface Session {
   id: string;
   locationId: string;

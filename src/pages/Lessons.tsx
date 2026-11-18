@@ -1,12 +1,26 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { locations, mapsUrl } from "../data/clubsData";
+import type { Location } from "../types/lessons";
+
+const withBreaks = (lines: string[]) => lines.map((line, i) => (i ? [<br key={i} />, line] : line));
+
+/** Institution and room, then — after a small gap — the street address. */
+function ClubAddress({ loc }: { loc: Location }) {
+  const place = [loc.institution, loc.room].filter((l): l is string => Boolean(l));
+  return (
+    <>
+      <p className="club-place">{withBreaks(place)}</p>
+      <p className="club-address">{withBreaks(loc.address)}</p>
+    </>
+  );
+}
 import { contact } from "../data/contactData";
 import { programs } from "../data/programsData";
 import { sessions } from "../data/scheduleData";
 import type { Session } from "../types/lessons";
 
-const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const HOUR_PX = 72;
 
 const toMin = (t: string) => {
@@ -135,27 +149,24 @@ export default function Lessons() {
                     {loc.name}
                   </button>
                 </h3>
-                <p>
-                  {loc.address[0]}
-                  <br />
-                  {loc.address[1]}
-                </p>
-                <p>{loc.hours}</p>
-                <p>
-                  <a href={loc.phoneHref} className="club-phone">{loc.phone}</a>
-                </p>
-                <p className="club-equip">
-                  * {loc.equipmentProvided ? "Equipment provided" : "Bring your own equipment"}
-                </p>
-                {loc.website && (
-                  <a href={loc.website} target="_blank" rel="noreferrer" className="inline-link club-site-link">
-                    Visit club website
+                <ClubAddress loc={loc} />
+                <div className="club-info-rest">
+                  <p>
+                    <a href={loc.phoneHref} className="club-phone">{loc.phone}</a>
+                  </p>
+                  <p className="club-equip">
+                    * {loc.equipmentProvided ? "Equipment provided" : "Bring your own equipment"}
+                  </p>
+                  {loc.website && (
+                    <a href={loc.website} target="_blank" rel="noreferrer" className="inline-link club-site-link">
+                      Visit Registration Site
+                    </a>
+                  )}
+                  <a href={mapsUrl(loc)} target="_blank" rel="noreferrer" className="inline-link club-map-link">
+                    <PinIcon />
+                    View on Google Maps
                   </a>
-                )}
-                <a href={mapsUrl(loc)} target="_blank" rel="noreferrer" className="inline-link club-map-link">
-                  <PinIcon />
-                  View on Google Maps
-                </a>
+                </div>
               </article>
             );
           })}
@@ -252,8 +263,7 @@ export default function Lessons() {
               <div className="cal-detail-club">
                 <p className="lbl">Club</p>
                 <p className="strong">{loc.name}</p>
-                <p>{loc.address[0]}<br />{loc.address[1]}</p>
-                <p>{loc.hours}</p>
+                <ClubAddress loc={loc} />
                 <p><a href={loc.phoneHref} className="inline-link">{loc.phone}</a></p>
                 <p className="club-equip">
                   * {loc.equipmentProvided ? "Equipment provided" : "Bring your own equipment"}

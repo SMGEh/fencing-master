@@ -8,8 +8,7 @@ export const books: Book[] = [
     ],
     specs: 'Bound in soft cover, 5-1/2" x 8-1/2", 156 pages, 201 illustrations, B/W',
     price: "$20.00 Canadian",
-    shipping: "Add $8.00 for shipping within Canada. Add $13.00 to ship internationally.",
-    orders: [{ label: "Order The Foil (English)", url: "#" }],
+    languages: ["English"],
   },
   {
     title: "The Comprehensive Guide for Fencing Strategy, Speed Development, Injury Prevention and Medical Care",
@@ -18,8 +17,7 @@ export const books: Book[] = [
     ],
     specs: 'Bound in hard cover, 5-1/2" x 8-1/2", 182 pages with illustrations, B/W',
     price: "$30.00 Canadian",
-    shipping: "Add $10.00 for shipping within Canada. Add $15.00 to ship internationally.",
-    orders: [{ label: "Order (English)", url: "#" }],
+    languages: ["English"],
   },
   {
     title: "The Manual for the Care and Repair of Electrical Fencing Equipment",
@@ -28,8 +26,7 @@ export const books: Book[] = [
     ],
     specs: 'Bound in soft cover, 5-1/2" x 8-1/2", 217 pages, 339 illustrations, B/W',
     price: "$25.00 Canadian",
-    shipping: "Add $10.00 for shipping within Canada. Add $15.00 to ship internationally.",
-    orders: [{ label: "Order the Manual of Weapons Repair (English)", url: "#" }],
+    languages: ["English"],
   },
   {
     title: "FENCING: Competitive Training and Practice — The Foil, The Épée, The Sabre, and the Manual for the Care and Repair of Electrical Fencing Equipment",
@@ -39,8 +36,7 @@ export const books: Book[] = [
     ],
     specs: 'Bound in soft cover, 5-1/2" x 8-1/2", approximately 867 pages and 915 illustrations, B/W',
     price: "$85.00 Canadian",
-    shipping: "Add $35.00 for shipping within Canada. Add $50.00 to ship internationally.",
-    orders: [{ label: "Order FENCING (English)", url: "#" }],
+    languages: ["English"],
   },
   {
     title: "Artistic Fencing",
@@ -49,12 +45,8 @@ export const books: Book[] = [
       "Presently, artistic fencing not only appears on the stage and in films, but also in historical re-enactments. This book covers many different treatises, which lay out the history of ancient fencing and the reconstruction of realistic sword combats. It provides a resource for sword enthusiasts, history buffs, and drama students with in-depth theoretical and practical instruction. Readers will discover a unique experience in the thrill and exhilaration of swordplay as it has been practiced for hundreds of years.",
     ],
     specs: 'Bound in soft cover, approximately 261 pages, 5.5" x 8.5", with over 800 illustrations by the author',
-    note: "Available in English, French, and Italian.",
-    orders: [
-      { label: "English edition", url: "#" },
-      { label: "French edition", url: "#" },
-      { label: "Italian edition", url: "#" },
-    ],
+    languages: ["English", "French", "Italian"],
+    price: ["English: $39.00 Canadian", "French: €24.00", "Italian: €19.00"],
   },
 ];
 

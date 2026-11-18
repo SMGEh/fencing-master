@@ -62,11 +62,20 @@ p { margin: 0; }
 
 .ph { background: var(--bg-deep); border: 1px dashed #a7b4c4; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--dim); font-weight: 500; }
 .master { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center; }
-.master-photo { aspect-ratio: 4 / 5; }
+.master-photo { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; display: block; }
 .bio { padding-top: 0; }
 .bio .in { border-top: 1px solid var(--line); padding-top: 64px; }
 .bio .lead { max-width: none; }
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; border-top: 1px solid var(--line); padding-top: 24px; margin-top: 32px; }
+.facts:has(.fact-tall) { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-content: start; }
+.facts > .fact-tall { grid-column: 2; grid-row: 1 / span 2; }
+.facts:has(.fact-tall) > div:not(.fact-tall) { grid-column: 1; }
+@media (max-width: 560px) {
+  .facts:has(.fact-tall) { grid-template-columns: 1fr; }
+  .facts > .fact-tall, .facts:has(.fact-tall) > div:not(.fact-tall) { grid-column: auto; grid-row: auto; }
+}
+.facts-list { list-style: none; margin: 0; padding: 0; }
+.facts-list li + li { margin-top: 12px; }
 
 .books-sec { padding-top: 0; }
 .books { display: flex; flex-direction: column; gap: 24px; }
@@ -98,7 +107,7 @@ p { margin: 0; }
 .history-card.selected { border-color: var(--accent-text); transform: translateY(-3px); }
 .history-expanded { margin: 40px auto 0; padding: 0; width: 100%; animation: expandIn 0.25s ease; }
 .history-expanded h2 { margin-bottom: 20px; }
-.history-expanded-image { width: 100%; max-height: 420px; object-fit: cover; display: block; margin-bottom: 24px; }
+.history-image { display: block; width: 100%; height: auto; object-fit: cover; }
 .history-expanded-content p { margin-bottom: 16px; line-height: 1.7; }
 .history-subsection { margin-top: 40px; }
 .history-subsection h3 { margin-bottom: 20px; font-size: 1.5rem; }
@@ -197,6 +206,11 @@ p { margin: 0; }
 .club-info-card h3 { padding-right: 36px; }
 .club-info-card h3 { margin: 0 0 8px; font-family: var(--display); font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
 .club-info-card p { margin-bottom: 8px; line-height: 1.5; color: var(--muted); font-size: 15px; }
+/* Cards share the grid's rows (subgrid), so the name, institution and address line up across cards. */
+.club-info-card { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
+.club-info-card .club-place { margin-bottom: 12px; }
+.club-info-rest { display: flex; flex-direction: column; }
+.cal-detail-club .club-place { margin-bottom: 10px; }
 .club-phone { position: relative; z-index: 1; font-weight: 600; color: var(--text); }
 .club-phone:hover { text-decoration: underline; }
 .club-equip { font-size: 14px !important; font-style: italic; color: var(--dim) !important; }
