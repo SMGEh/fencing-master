@@ -6,6 +6,7 @@ const links = [
   { to: "/master", label: "The Master", end: false },
   { to: "/history", label: "History", end: false },
   { to: "/books", label: "Books", end: false },
+  { to: "/photos", label: "Photos", end: false },
 ];
 
 export default function Layout() {

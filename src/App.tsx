@@ -5,6 +5,7 @@ import Master from "./pages/Master";
 import Lessons from "./pages/Lessons";
 import History from "./pages/History";
 import Books from "./pages/Book";
+import Photos from "./pages/Photos";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="locations" element={<Navigate to="/lessons" replace />} />
         <Route path="history" element={<History />} />
         <Route path="books" element={<Books />} />
+        <Route path="photos" element={<Photos />} />
       </Route>
     </Routes>
   );
